@@ -79,8 +79,8 @@ DATABASES = {
         'NAME': 'test_db',
         'USER': 'root',
         'PORT': '3306',
-        'HOST': 'database'
-        # 'HOST': '0.0.0.0'
+        # 'HOST': 'database'
+        'HOST': '0.0.0.0'
     }
 }
 
