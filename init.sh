@@ -13,4 +13,4 @@ sudo /etc/init.d/mysql start
 
 mysql -uroot -e "create database test_db;"
 
-/home/box/web/ask/manage.py makemigrations qa && /home/box/web/ask/manage.py migrate
+python3 /home/box/web/ask/manage.py makemigrations qa && python3 /home/box/web/ask/manage.py migrate
