@@ -2,7 +2,7 @@ FROM python:3.4.3
 
 WORKDIR /home/box/web
 
-COPY . ./
+ADD ./requirements.txt .
 
 RUN pip install -r requirements.txt
 
