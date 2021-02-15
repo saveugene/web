@@ -14,6 +14,7 @@ done
 # fi
 
 # python3 /home/box/web/ask/manage.py loadtestdata qa.Question:20 &
+python3 /home/box/web/ask/manage.py migrate
 python3 /home/box/web/ask/manage.py runserver 0:8000 &
-# python3 /home/box/web/ask/manage.py migrate &
-gunicorn -c /home/box/web/etc/hello.conf.py hello 
+gunicorn -c /home/box/web/etc/hello.conf.py hello &
+
