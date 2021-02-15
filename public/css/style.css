@@ -1,0 +1,13 @@
+a{
+    text-decoration: none;
+}
+#logo-title{
+    font-size: 25px;
+    color: orange;
+    text-shadow: orange 1px 0 10px;
+    box-sizing:content-box;
+    padding: 5px;
+}
+.nav{
+    font-weight: bold;
+}

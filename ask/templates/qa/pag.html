@@ -1,0 +1,25 @@
+{% extends "./base.html" %}
+{% block content %}
+<ul>
+{% for obj in page.object_list %}
+    <li class="m-2">
+        <a href="{{ detail_page_route }}/{{ obj.id }}/">{{obj.title}}</a>
+    </li>
+{% endfor %}
+</ul>
+<div class="text-center">
+    {% if page.has_previous %}
+        <a href="/?page={{ page.previous_page_number }}"><</a> 
+    {% endif %}
+    {% for page_n in page_n_list %}
+        {% if page_n == page.number %}
+           <a style="color: brown;" href="/?page={{ page_n }}">{{ page_n }}</a>
+        {% else %}
+        <a href="/?page={{ page_n }}">{{ page_n }}</a>
+        {% endif %}
+    {% endfor %}
+    {% if page.has_next %}
+        <a href="/?page={{ page.next_page_number }}">></a> 
+    {% endif %}
+</div>
+{% endblock %}

@@ -29,7 +29,7 @@ services:
       database:
         condition: service_healthy
     healthcheck:
-      test: curl --fail -s http://0.0.0.0:8000/ || exit 1
+      test: curl --fail -s http://0.0.0.0:8080/ || exit 1
       interval: 30s
       start_period: 20s
 
