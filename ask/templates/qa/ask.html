@@ -1,39 +1,26 @@
 {% extends "./base.html" %}
-{% block title %}Question №{{ question.id}}{% endblock %}
+{% block title %}Ask question{% endblock %}
 {% block content %}
-<h4>{{ question.title}}</h4>
-<hr>
-<div><p>{{ question.text}}</p></div>
-<hr>
-{% if answers.count != 0 %}
-    <h5>{{ answers.count }} answers</h5>
-    <div>
-        {% for answ in answers %}
-        <div class="answer">
-            <div class="answer-author text-primary font-italic">{{answ.author}}</div>
-            {{ answ.text }}
-        </div>
-        {% endfor %}
-    </div>
-{% else %}
-    <h5>No answers</h5>
-{% endif %}
 
 <div>
     {% if form.non_field_errors.count %}
         <div class="alert alert-danger">{{ form.non_field_errors }}</div>
     {% endif %}
     <form method="POST" class="w-25">
+        {% if form.title.errors %}
+            <div class="alert alert-danger">{{ form.title.errors }}</div>
+            {% endif %}
+        <div class="form-group">
+            {{ form.title }}
+        </div>
         {% if form.text.errors %}
             <div class="alert alert-danger">{{ form.text.errors }}</div>
         {% endif %}
         <div class="form-group">
             {{ form.text }}
         </div>
-        {{ form.question }}
         {% csrf_token %}
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
-
 {% endblock %}

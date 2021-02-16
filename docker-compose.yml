@@ -48,6 +48,10 @@ services:
       test: mysqladmin ping -h localhost
       timeout: 5s
       interval: 5s
+    volumes:
+      - db-volume:/var/lib/mysql
 
 networks:
   webapp:
+volumes:
+  db-volume:

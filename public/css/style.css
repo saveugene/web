@@ -11,3 +11,14 @@ a{
 .nav{
     font-weight: bold;
 }
+
+.answer{
+    border: 2px black solid;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.answer-author{
+    font-size: 20px;
+    font-weight: bold;
+}
