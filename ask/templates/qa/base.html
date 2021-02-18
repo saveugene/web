@@ -16,9 +16,21 @@
         <a href="/"><span id="logo-title">slack overglow</span></a>
     </div>
     <hr>
-    <div class="d-flex h-100 container nav ">
-        <a class="m-1" href="/popular">Popular</a>
-        <a class="m-1" href="/ask">Ask</a>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <a class="p-2" href="/popular">Popular</a>
+                <a class="p-2" href="/ask">Ask</a>
+            </div>
+            <div class="col-2">
+                {% if not user.id %}
+                <a class="p-2" href="/login">Login</a>
+                <a class="p-2" href="/signup">Signup</a>
+                {% else %}
+                <a class="p-2" href="/logout">Logout</a>
+                {% endif %}
+            </div>
+        </div>
     </div>
     <hr>
     <div class="container">

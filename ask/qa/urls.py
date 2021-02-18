@@ -1,13 +1,14 @@
 from django.conf.urls import url
 
-from .views import test, question, popular, index, ask
+from .views import test, question, popular, index, ask, login, logout, signup
 
 urlpatterns = [
-    url('popular/', popular),
+    url('popular', popular),
     url(r'question/(?P<id>[\d]+)', question),
-    url('login/', test),
-    url('signup/', test),           
-    url('ask/',ask),
-    url('new/', test),
+    url('test', test),
+    url('login', login),
+    url('logout', logout),
+    url('signup', signup),           
+    url('ask', ask),
     url('', index),
 ]

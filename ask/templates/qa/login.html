@@ -1,0 +1,26 @@
+{% extends "./base.html" %}
+{% block content %}
+<div class="d-flex justify-content-center text-center">
+    {% if form.non_field_errors.count %}
+        <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+    {% endif %}
+    <form method="POST" class="w-25">
+        {% csrf_token %}
+
+        {% if form.username.errors %}
+            <div class="alert alert-danger">{{ form.username.errors }}</div>
+        {% endif %}
+        <div class="form-group">
+            {{ form.username }}
+        </div>
+        
+        {% if form.password.errors %}
+            <div class="alert alert-danger">{{ form.password.errors }}</div>
+        {% endif %}
+        <div class="form-group">
+            {{ form.password }}
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}

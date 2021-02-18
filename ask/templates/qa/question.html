@@ -1,16 +1,17 @@
 {% extends "./base.html" %}
 {% block title %}Question №{{ question.id}}{% endblock %}
 {% block content %}
-<h4>{{ question.title}}</h4>
-<hr>
+<h3>{{ question.title}}</h3>
 <div><p>{{ question.text}}</p></div>
+<div>by <span class="question-author">{{ question.author }}</span></div>
+
 <hr>
 {% if answers.count != 0 %}
     <h5>{{ answers.count }} answers</h5>
     <div>
         {% for answ in answers %}
         <div class="answer">
-            <div class="answer-author text-primary font-italic">{{answ.author}}</div>
+            <div class="answer-author">{{answ.author}}</div>
             {{ answ.text }}
         </div>
         {% endfor %}

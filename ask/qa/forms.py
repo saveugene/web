@@ -2,7 +2,6 @@ from django import forms
 from .models import Question as QuestionModel, Answer as AnswerModel
 from django.contrib.auth.models import User
 
-
 class AskForm(forms.Form):
     title = forms.CharField(label='Title', max_length=255, widget=forms.TextInput(attrs={'placeholder': 'Question title '}))
     text = forms.CharField(
@@ -16,11 +15,10 @@ class AskForm(forms.Form):
     )
 
     def save(self):
-        author = User.objects.get_or_create(username='test_user')[0] # remove later
         return QuestionModel.objects.create(
-            author_id=author.id,
-            title=self.cleaned_data['title'],
-            text=self.cleaned_data['text']
+            author_id=self._user.id,
+            title=self.cleaned_data.get('title'),
+            text=self.cleaned_data.get('text')
         )   
 
 class AnswerForm(forms.Form):
@@ -37,10 +35,47 @@ class AnswerForm(forms.Form):
     question = forms.IntegerField(widget=forms.HiddenInput())
 
     def save(self):
-        author = User.objects.get_or_create(username='test_user')[0] # remove later
         return AnswerModel.objects.create(
-            author_id=author.id,
+            author_id=self._user.id,
             text=self.cleaned_data['text'],
             question_id=self.cleaned_data['question']
         )
     
+
+class SignupForm(forms.Form):
+    username = forms.CharField(widget=forms.TextInput(
+        attrs={
+            'placeholder': 'Username'
+        }
+    ))  
+    email = forms.EmailField(widget=forms.TextInput(
+        attrs={
+            'placeholder': 'Email'
+        }
+    ))
+    password = forms.CharField(widget=forms.PasswordInput(
+        attrs={
+                'placeholder': 'Password'
+            }
+    ))
+
+    def save(self):
+        cd = self.cleaned_data
+        return User.objects.create_user(
+            username=cd.get('username'),
+            password=cd.get('password'),
+            email=cd.get('email')
+        )
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField(widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Username'
+            }
+        ))
+    password = forms.CharField(widget=forms.PasswordInput(
+        attrs={
+                'placeholder': 'Password'
+            }
+    ))
