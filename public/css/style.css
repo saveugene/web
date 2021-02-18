@@ -1,14 +1,13 @@
 a{
     text-decoration: none;
 }
+
 #logo-title{
     font-size: 25px;
     color: orange;
     text-shadow: orange 1px 0 10px;
     box-sizing:content-box;
     padding: 5px;
-}
-.nav{
     font-weight: bold;
 }
 
@@ -18,12 +17,14 @@ a{
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
 .answer-author{
     font-size: 13px;
     margin-bottom: 5px;
     font-weight: bold;
     color: orange;
 }
+
 .form-group{
     margin-bottom: 5px;
 }

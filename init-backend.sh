@@ -4,16 +4,6 @@ do
     sleep 2
 done
 
-# pip_c="$(pip freeze)"
-# pip_e="$(cat requirements.txt)"
-
-# if [[ $pip_c =~ $pip_e ]]; then
-#     echo "Python libs are up-to-date"
-# else
-#     pip install -r requirements.txt
-# fi
-
-# python3 /home/box/web/ask/manage.py loadtestdata qa.Question:20 &
 python3 /home/box/web/ask/manage.py migrate
 gunicorn -c /home/box/web/etc/hello.conf.py hello &
 python3 /home/box/web/ask/manage.py runserver 0:8000 

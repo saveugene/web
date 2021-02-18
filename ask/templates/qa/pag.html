@@ -1,15 +1,14 @@
 {% extends "./base.html" %}
 {% block content %}
-<ul>
+<ul class="list-group">
 {% for obj in page.object_list %} 
-    <li class="m-2">
+    <li class="list-group-item">
         <a href="{{ detail_page_route }}/{{ obj.id }}/">{{obj.title}}</a>
     </li>
 {% endfor %}
 </ul>
 <div class="text-center">
 {% if page_n_list %}
-
     {% if page.has_previous %}
         <a href="/?page={{ page.previous_page_number }}"><</a> 
     {% endif %}
